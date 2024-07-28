@@ -1,0 +1,43 @@
+<head></head>
+<script>
+    //trong js, array là một object, không có kiểu dữ liệu array
+
+    const cars = ["Saab", "Volvo", "BMW"];
+    console.log(cars);   //kiểu dữ liệu object
+    document.write(cars);
+    console.log(typeof cars);   //trả về là kiểu object
+    console.log(Array.isArray(cars)); //trả về "true" 
+
+    console.log(cars.toString());  //kiểu dữ liệu string
+    console.log(typeof cars.toString());
+
+    for (let i = 0; i < cars.length; i++) {
+        console.log(cars[i]);
+    }
+
+    //array là một object, object là một array
+    const person = {
+        name: "john",
+        age: 28,
+        address: { quan: "hoan kiem", duong: "nguyen trai" },
+        talk: function () {
+            return "im " + this.age + " years old";
+        }
+    }
+    console.log(person.name + ": " + person.talk());
+
+
+    //object bên trong array
+    let users = [
+        { firstName: "Susan", lastName: "Steward" },    //mỗi một thằng này là 1 object
+        { firstName: "Daniel", lastName: "Longbottom" },
+        { firstName: "Jacob", lastName: "Black" }
+    ];
+    console.log(typeof users);  //object
+    console.log(Array.isArray(users));   //true
+
+    console.log(users[0]);   //{firstName: 'Susan', lastName: 'Steward'}
+    console.log(typeof users[0]); //object
+    console.log(Array.isArray(users[0]));  //false
+    console.log(users[0].firstName)  //output: Susan
+</script>

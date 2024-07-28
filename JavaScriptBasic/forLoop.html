@@ -1,0 +1,37 @@
+<head></head>
+<script>
+    const person = { fname: "John", lname: "Doe", age: 25 };
+    console.log(person.fname)   //bên ngoài vòng lặp là person.x
+
+    //Câu lệnh JS for in lặp qua các thuộc tính của một Đối tượng
+    for (let x in person) {
+        console.log(x); //output: fname, lname, age
+        console.log(person[x]); //in trong vòng lặp lại dùng person[x] chứ không phải person.x
+    }
+
+    const numbers = [45, 4, 9, 16, 25];
+    // for (let a in numbers) {
+    //     console.log(a);   //output: 0,1,2,3,4
+    //     console.log(numbers[a]);
+    // }
+    // ※ Khuyến cáo: không nên sử dụng for in khi array = [], chỉ sử dụng khi array là object giống vd trên
+
+    const dao = ["dao", "nguyen", 10];
+    function printArr(value){
+        console.log(value);
+    }
+    numbers.forEach(printArr);  //output: 45 , 4, 9, 16, 25
+    dao.forEach(printArr);    //output: dao, nguyen , 10
+
+    //for of
+    for (let x of dao) {
+        console.log(x)       //output: dao, nguyen , 10
+    }
+
+    /*
+    Lưu ý: 
+       - Dùng for in khi chuỗi là một đối tượng ={}
+       - Dùng forEach hoặc for of khi chuỗi là chuỗi kiểu =[]
+          + Muốn tái sử dụng code nhiều thì forEach hợp hơn
+    */
+</script>

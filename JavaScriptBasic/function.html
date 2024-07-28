@@ -1,0 +1,37 @@
+<head></head>
+<script>
+    const time = new Date();
+    const CURRENT_YEAR = time.getFullYear();
+    let yearBorn = 1999;
+
+
+    //普通の書き方
+    function calcAge(CURRENT_YEAR, yearBorn) {
+        return CURRENT_YEAR - yearBorn;
+    }
+    //無名関数
+    const calcAge1 = function (CURRENT_YEAR, yearBorn) {    //function trong object thì thay dấu = bằng dấu : (calcAge1 : function (CURRENT_YEAR, yearBorn) {)
+        return CURRENT_YEAR - yearBorn;
+    } 
+
+    //Arrow function  (arrow : mũi tên)
+    const calcAge2 = (CURRENT_YEAR, yearBorn) => {
+        return CURRENT_YEAR - yearBorn;
+    }
+    //Arrow function bản rút gọn
+    const calcAge3 = (CURRENT_YEAR, yearBorn) => CURRENT_YEAR - yearBorn;
+
+
+    // let age = calcAge(CURRENT_YEAR, yearBorn);
+    // console.log(age);
+    // console.log(calcAge1(CURRENT_YEAR, yearBorn));
+    // console.log(calcAge2(CURRENT_YEAR, yearBorn));
+    console.log(calcAge3(CURRENT_YEAR, yearBorn));
+
+
+    // ※ Lưu ý: Các biến định nghĩa như trên là biến global, cho nên có thể sử dụng trong hàm luôn, tức là không cần truyền tham số calcAge(CURRENT_YEAR, yearBorn) miễn sao thằng return viết đúng CURRENT_YEAR - yearBorn
+    const calcAge4 = () => {     //không cần truyền tham số
+        return CURRENT_YEAR - yearBorn;
+    }
+    console.log(calcAge4());  //không cần truyền tham số ... output : 25
+</script>

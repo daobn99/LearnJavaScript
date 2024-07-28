@@ -1,0 +1,27 @@
+<head></head>
+<script>
+    //Set là một tập hợp các giá trị, mà trong đó, mỗi giá trị chỉ có thể xuất hiện một lần duy nhất.
+
+    const letters = new Set(["a", "b", "c"]);
+    console.log(letters);
+    for (const letter of letters) {
+        console.log(letter);
+    }
+
+    letters.add("d");
+    letters.add("d");
+    letters.add("e");
+    console.log(letters);
+    console.log(letters.size);
+    console.log(letters[0]); //UNDEFINED : không thể truy xuất một phần tử của set thông qua chỉ mục
+
+    //has() : kiểm tra xem có phần tử trong set hay không
+    console.log(letters.has("f"));  //output: false
+
+    //delete()
+    console.log(letters.delete("d"))  //output: true
+    console.log(letters)  //Set(4) {'a', 'b', 'c', 'e'}
+
+    const myIterator = letters.entries(); //đéo hiểu lắm
+    console.log(myIterator);  //SetIterator {'a' => 'a', 'b' => 'b', 'c' => 'c', 'e' => 'e'}
+</script>

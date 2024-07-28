@@ -1,0 +1,45 @@
+<head></head>
+<script>
+    const fruits = ["Banana", "Orange", "Apple", "Mango", "Apple", "cherry"];
+
+    //at()
+    console.log(fruits[fruits.length]);
+    console.log(fruits.at(2));   //giống fruits[2]
+    console.log(fruits.at(-1));   //tìm phần tử cuối, fruits[-1] không hoạt động
+
+    //join()
+    console.log(fruits.join());  //giống fruits.toString(), nhưng có thể thêm ngăn cách gì đó ở giữa giống dòng dưới
+    console.log(fruits.join("-"))   //output: Banana-Orange-Apple-Mango
+
+    //shift()loại bỏ phần tử đầu tiên và "chuyển" tất cả các phần tử khác sang chỉ số thấp hơn.
+    // fruits.shift()
+    // console.log(fruits)  //['Orange', 'Apple', 'Mango']
+
+    //unshift()thêm một phần tử mới vào đầu mảng và đẩy các phần tử cũ sang phải
+    // fruits.unshift("Lemon");
+    // console.log(fruits);  //['Lemon', 'Banana', 'Orange', 'Apple', 'Mango']
+
+    //indexOf() : tìm index phần tử trong mảng
+    console.log(fruits.indexOf("Apple"));  //output: 2
+
+    //lastIndexOf(): tìm index cuối nếu trong mảng có nhiều phần tử trùng tên
+    console.log(fruits.lastIndexOf("Apple"));
+
+    //includes() : kiểm tra xem một phần tử có hiện diện trong mảng hay không
+    console.log(fruits.includes("Orange"));  //output: true
+
+
+    //SẮP XẾP
+    //sort() : sắp xếp theo thứ tự bé -> lớn (hoặc A -> Z), tuy nhiên sẽ có vấn đề khi xếp số
+    const points = [40, 100, 1, 5, 25, 10];
+    console.log(points.sort()); //output: [1, 10, 100, 25, 40, 5]
+
+    /*để cải thiện vấn đề trên, cần dùng hàm function(a, b){return a - b}
+    Hàm sẽ trả về số âm/dương/0. Nếu a-b<0 thì a đứng trước b, a-b>0 thì a đứng sau b, a-b=0 thì không đổi
+    */
+
+    tangDan = points.sort(function(a, b){return a - b}); //xếp tăng dần
+    console.log(tangDan); //[1, 5, 10, 25, 40, 100]
+    giamDam = points.sort(function(a, b){return b - a}); //xếp giảm dần
+    console.log(giamDam);
+</script>

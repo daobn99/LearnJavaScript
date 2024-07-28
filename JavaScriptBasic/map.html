@@ -1,0 +1,28 @@
+<head></head>
+<script>
+    const fruits = new Map([
+        ["apples", 500],    //[key, value]
+        ["bananas", 300],
+        ["oranges", 200]
+    ]);
+    console.log(fruits);  //Map(3) {'apples' => 500, 'bananas' => 300, 'oranges' => 200}
+    console.log(fruits.size); //output: 3  (trả về số phần tử trong map)
+
+    //set() : thêm thành phần vào map()
+    fruits.set("lemon", 100);
+    console.log(fruits);  //Map(4) {'apples' => 500, 'bananas' => 300, 'oranges' => 200, 'lemon' => 100}
+
+    //get() : lấy phần value của key
+    console.log(fruits.get("apples"));  //500
+
+    //has()
+    console.log(fruits.has("oranges"));  //true
+    //delete()
+    fruits.delete("lemon");
+    console.log(fruits.has("lemon"));  //false
+
+    //forEach
+    fruits.forEach((key, value) => {
+        console.log(key + " " + value);  
+    });
+</script>
