@@ -1,0 +1,42 @@
+<head></head>
+<script>
+    const courses = [    //array object
+        {
+            id : 1,
+            name : "Javascript",
+            coin : 500
+        },
+        {
+            id : 2,
+            name : "Python",
+            coin : 200
+        },
+        {
+            id : 3,
+            name : "HTML",
+            coin : 100
+        },
+        {
+            id : 4,
+            name : "C++",
+            coin : 400
+        },
+    ];
+    console.log(courses[0].name);   //Javascript
+    
+    // const courseHandle = function(element) {
+    //     console.log(element.name)
+    // };
+    const courseHandle = function(element) {
+        return {
+            id: element.id,
+            name: `Khoa hoc: ${element.name}`,
+            coint: element.coin,
+            cointText: `Gia: ${element.coint}`
+            
+        };
+    };
+    const newCourses = courses.map(courseHandle); //dùng map để tạo ra một cái array mới và có thể sửa đổi trực tiếp (thêm sửa tùy thích) các phần tử mà không ảnh hưởng đến array ban đầu 
+    console.log(newCourses);
+    console.log(typeof newCourses);
+</script>

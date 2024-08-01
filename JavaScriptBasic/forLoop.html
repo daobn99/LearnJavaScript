@@ -22,6 +22,7 @@
     }
     numbers.forEach(printArr);  //output: 45 , 4, 9, 16, 25
     dao.forEach(printArr);    //output: dao, nguyen , 10
+    //Lưu ý: for each không nhận giá trị trả về, nên không phải gán nó bằng một biến kiểu "me = dao.forEach(printArr)" rồi print(me), gán sẽ in ra undefine. 
 
     //for of
     for (let x of dao) {
