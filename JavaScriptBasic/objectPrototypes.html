@@ -1,0 +1,15 @@
+<head></head>
+<script>
+    function Person(first, last, age, eyecolor) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eyecolor;
+    }
+    const myFather = new Person("John", "Doe", 50, "blue");
+    Person.nationality = "English"; //không thể thêm constructor trực tiếp như này 
+    console.log(myFather.nationality);  //undefined 
+    Person.prototype.nationality = "English";  //mà phải thêm qua prototype
+    console.log(myFather.nationality);  //English
+
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction() {
+            let x = document.getElementById("num").value;
+            let text;
+            if (x >= 1 && x <=10) {
+                alert("Input ok")
+            } else if (x == "") {
+                alert("再度入力してください")
+            } else {
+                alert("Input not valid")
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id="changeColor">Enter a number between 1 and 10: </p>
+    <input id="num" type="text">
+    <button type="button" onclick="myFunction()">Submit</button>
+    <br>
+    <button type="button" onclick="document.getElementById('changeColor').style.color = 'red'">Click here to change color</button>
+
+    <h1 onclick="this.innerHTML = 'HELLO WORLD!'">Click on this text!</h1> <!--có this hay không cũng được (nên viết)-->
+</body>
+</html>
