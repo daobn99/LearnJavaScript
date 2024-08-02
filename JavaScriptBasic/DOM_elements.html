@@ -1,0 +1,49 @@
+<body>
+    <p>this is paragraph 1</p> <!--element[0]-->
+    <p>this is paragraph 2</p> <!--element[1]-->
+    <p id="demo"></p>
+    <div>----------------------------</div>
+
+    <p id="demo2"></p>
+    <div id="main">
+        <p>paragraph 1 trong thẻ div </p>
+        <p>paragraph 2 trong thẻ div </p>
+    </div>
+    <div>----------------------------</div>
+
+    <p class="intro">Hello</p>
+    <p class="intro">World</p>
+    <p id="demo3"></p>
+
+    <p id="demo4"></p>
+    <form id="frm1" action="/action_page.php">
+        First name: <input type="text" name="fname" value="Donald"><br>
+        Last name: <input type="text" name="lname" value="Duck"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script>
+    const element = document.getElementsByTagName("p");
+    console.log(element[0]);   //output: <p>this is paragraph 1</p>
+    //element[0] là cả cái thẻ p thứ nhất, muốn dùng cái nội dung của của phải dùng .innerHTML
+    document.getElementById("demo").innerHTML = "thẻ p có id là demo đã thêm :" + element[0].innerHTML;
+
+    const x = document.getElementById("main").getElementsByTagName("p");
+    document.getElementById("demo2").innerHTML = x[0].innerHTML;  //output: paragraph 2 trong thẻ div
+
+    const y = document.getElementsByClassName("intro");
+    document.getElementById("demo3").innerHTML = y[0].innerHTML + " " + y[1].innerHTML;
+
+    const z = document.querySelectorAll("p.intro");
+    document.getElementById("demo3").innerHTML = z[0].innerHTML;
+
+    const a = document.forms["frm1"];
+    // console.log(a[2]);   //<input type="submit" value="Submit">
+    let text = "";
+    for (let i = 0; i < a.length; i++) {
+        text += a.elements[i].value + "<br>";  //"elements" là từ khóa bắt buộc
+        // console.log(a.elements[i])   //elements[i] là 3 cái input <input type="text" name="fname" value="Donald">, ....
+    }
+    // console.log(text)   //Donald<br>Duck<br>Submit<br>
+    document.getElementById("demo4").innerHTML = text;
+</script>

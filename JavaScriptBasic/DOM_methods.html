@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <p id="demo">hello 123</p>
+
+        <p id="name">My name is Dao</p>
+        <p id="intro"></p>
+    </body>
+    <script>
+        /*
+        ・getElementById là một method, innerHTML là một property 
+        ・Dòng bên dưới được hiểu là:
+        　　　Tìm (finding) đến cái phần tử HTML có ID demo và thay đổi (changing) nội dung của nó 
+        */
+        document.getElementById("demo").innerHTML = "hello dao"   //thay đổi hello 123 thành hello dao 
+        
+        const introMyself = document.getElementById("name");
+        document.getElementById("intro").innerHTML = "Introduce yourself: " + introMyself.innerHTML;  //Introduce yourself: My name is Dao
+    </script>
+</html>
