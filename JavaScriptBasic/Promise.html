@@ -1,0 +1,45 @@
+<head></head>
+<script>
+    const myFunction1 = () => {
+        return Promise.resolve("hello world")
+    }
+    myFunction1().then(
+        (value) => { console.log(value); },
+        (error) => { console.log(error); }  //Không cần dòng này cũng đc 
+    )
+    //---------------------
+    const myPromise = new Promise((resolve, reject) => {
+        const a = 1;
+        if (a === 1) {
+            resolve("OK")
+        } else {
+            reject("ERROR")
+        }
+    });
+    myPromise.then(
+        (value) => { console.log(value); }, (error) => { console.log(error); }
+    )
+
+    //----------------------------
+    const greeting = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Happy New Year !")
+        }, 2000);
+    });
+    greeting.then(
+        (value) => { console.log(value); }
+    )
+
+    //-----------------------------
+    /**
+     * findDailyReport là một cái hàm nhận tham số là baseDay. Hàm này có kiểu dữ liệu
+     * là một Promise, Promise có kiểu dữ liệu là DailyReport[].
+     * Hàm này thay vì return ra promise thì nó dùng axios để lấy api 
+    */
+    // export const findDailyReport = (baseDay: string): Promise<DailyReport[]> => {
+    //     return axios.get("/report/daily", { params: { baseDay } });
+    // };
+    export const findDailyReport = (baseDay) => { //viết theo kiểu javascript
+        return axios.get("/report/daily", { params: { baseDay } });
+    };
+</script>

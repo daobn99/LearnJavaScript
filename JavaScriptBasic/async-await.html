@@ -1,0 +1,46 @@
+<head></head>
+<script>
+    /**
+     * viết từ khóa async trước một hàm thì hàm đó sẽ trả về
+     * môt Promise 
+    */
+
+    // viết bình thường:
+    const myFunction1 = () => {
+        return Promise.resolve("hello world")
+    } //lược bỏ phần .then 
+
+    // dùng async 
+    const myFunction = async () => {
+        return "hello world"
+    }
+    myFunction().then(
+        (value) => { console.log(value); },
+        (error) => { console.log(error); }  //Không cần dòng này cũng đc 
+    )
+
+    //------------------------------
+
+    const myDisplay = async () => {
+        const greeting = new Promise((resolve, reject) => {  // Không cần reject cũng đc 
+            resolve("Happy new year !");
+        });
+        // console.log(greeting); //Promise {<fulfilled>: 'Happy new year !'}
+        console.log(await greeting); // Happy new year !
+    }
+    myDisplay();
+
+    //-------------------------------
+
+    const myDisplay1 = async () => {
+        const greeting = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve("(after 2s): Happy new year !")
+            }, 2000)
+        });
+        const result = await greeting;
+        console.log(result);
+    }
+    myDisplay1();
+
+</script>

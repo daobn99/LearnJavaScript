@@ -1,0 +1,36 @@
+<head></head>
+<script>
+    // 非同期でAPIにリクエストを投げて値を取得する処理
+    const request1 = () => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(1);
+            }, 1000);
+        })
+    }
+    // 受け取った値を別のAPIにリクエストを投げて値を取得する処理
+    const request2 = (request1) => {
+        return new Promise ((resolve) => {
+            setTimeout(() => {
+               resolve(request1 + 1); 
+            }, 1000);
+        })
+    }
+    // 受け取った値を別のAPIにリクエストを投げて値を取得する処理
+    const request3 = (request2) => {
+        return new Promise ((resolve) => {
+            setTimeout(() => {
+               resolve(request2 + 1); 
+            }, 1000);
+        })
+    }
+
+    const main = async () => {
+        const result1 = await request1();
+        const result2 = await request2(result1);
+        const result3 = await request3(result2);
+
+        console.log(result3);
+    }
+    main();
+</script>

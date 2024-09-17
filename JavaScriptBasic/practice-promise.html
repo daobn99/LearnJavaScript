@@ -1,0 +1,61 @@
+<head></head>
+<script>
+    const users = [
+        { id: 1, name: "nam" },
+        { id: 2, name: "son dang" },
+        { id: 3, name: "vinh" }
+    ];
+
+    const comments = [
+        {
+            id: 1,
+            userId: 1,
+            content: "ra video moi chua ad"
+        },
+        {
+            id: 2,
+            userId: 2,
+            content: "tuan sau ra nha e"
+        }
+    ];
+
+    /**1. Lấy comments
+     * 2. Từ comments lấy ra userId 
+     *  từ userId lấy ra user name tương ứng 
+    */
+    const getUsersById = (userIdList) => {
+        return new Promise((resolve) => {
+            const result = users.filter((user) => {
+                return userIdList.includes(user.id);
+            });
+            // console.log(result); // đoạn này cũng in đc ra result rồi nhưng xử lý BĐB thì cho nó vào resolve()
+            setTimeout(() => {
+                resolve(result);
+            }, 1000);
+        })
+    };
+
+    const getComments = () => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(comments);
+            }, 1000);
+        })
+    };
+
+    getComments()
+        .then((comments) => {
+            const userIdList = comments.map((comment) => {
+                return comment.userId;
+            });
+            return getUsersById(userIdList).then((users) => {
+                return {
+                    user: users,
+                    comment: comments,
+                }
+            });
+        })
+        .then((data) => {
+            console.log(data);
+        })
+</script>
