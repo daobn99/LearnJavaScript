@@ -1,0 +1,20 @@
+<head></head>
+<script>
+    const login = async(username, password) => {
+        if (!username || !password) {
+            throw new Error("ユーザー名またはパスワードがありません");
+        } else if (password === "123456") {
+            return "ようこそ !";
+        } else {
+            throw new Error("パスワードが間違っています")
+        }
+    }
+    login("user_name", "1234sa56")
+        .then((data) => {
+            console.log(data);
+        })
+        .catch ((error) => {
+            console.log( error);
+        })
+    console.log(1);
+</script>

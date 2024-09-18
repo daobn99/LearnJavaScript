@@ -1,9 +1,9 @@
 <head></head>
 <script>
     const users = [
-        { id: 1, name: "nam" },
-        { id: 2, name: "son dang" },
-        { id: 3, name: "vinh" }
+        { userId: 1, name: "nam" },
+        { userId: 2, name: "son dang" },
+        { userId: 3, name: "vinh" }
     ];
 
     const comments = [
@@ -16,6 +16,11 @@
             id: 2,
             userId: 2,
             content: "tuan sau ra nha e"
+        },
+        {
+            id: 3,
+            userId: 1,
+            content: "thankiu a"
         }
     ];
 
@@ -26,14 +31,13 @@
     const getUsersById = (userIdList) => {
         return new Promise((resolve) => {
             const result = users.filter((user) => {
-                return userIdList.includes(user.id);
+                return userIdList.includes(user.userId);
             });
-            // console.log(result); // đoạn này cũng in đc ra result rồi nhưng xử lý BĐB thì cho nó vào resolve()
             setTimeout(() => {
                 resolve(result);
             }, 1000);
         })
-    };
+    }
 
     const getComments = () => {
         return new Promise((resolve) => {
@@ -41,21 +45,22 @@
                 resolve(comments);
             }, 1000);
         })
-    };
-
+    }
     getComments()
         .then((comments) => {
             const userIdList = comments.map((comment) => {
                 return comment.userId;
             });
-            return getUsersById(userIdList).then((users) => {
+            return getUsersById(userIdList).then((users) => {  // return của then thứ nhất sẽ trả về kết quả sang cái then thứ 2 
                 return {
                     user: users,
-                    comment: comments,
+                    comment: comments
                 }
-            });
-        })
-        .then((data) => {
+            })
+        }
+        )
+        .then((data) => {  // return kết quả của then bên trên trả về đây 
             console.log(data);
         })
+    
 </script>

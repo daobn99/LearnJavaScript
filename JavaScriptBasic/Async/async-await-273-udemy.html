@@ -1,0 +1,80 @@
+<head></head>
+<script>
+    /**
+     * awaitは Promise が resolve または rejectするまで
+     * async関数の実行を一時的に停止する
+    */
+    const delayedColorChange = (color, delay) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                document.body.style.backgroundColor = color;
+                resolve();
+            }, delay);
+        })
+    }
+    // 普通のPromiseのやり方
+    // delayedColorChange('red', 1000)
+    //     .then(() => delayedColorChange('orange', 1000))
+    //     .then(() => delayedColorChange('yellow', 1000))
+
+
+    // async-awaitのやり方
+    // const rainbow = async () => {
+    //     await delayedColorChange('red', 2000)
+    //     console.log("ajksfdljkfdlsj"); //hàm này sẽ không được chạy cho đến khi hàm await bên trên chạy xong 
+    //     await delayedColorChange('orange', 2000)
+    //     await delayedColorChange('yellow', 2000)
+    // }
+    // const printRainbow = async() => {
+    //     await rainbow();
+    //     console.log("完了");
+    // }
+    // printRainbow();
+
+    //--------------------------------------------------
+
+    const fakeRequest = (url) => {
+        return new Promise((resolve, reject) => {
+            const delay = Math.floor(Math.random() * 4500) + 500;
+            setTimeout(() => {
+                if (delay > 4000) {
+                    reject("コネクションタイムアウト");
+                } else {
+                    resolve(`ダミーデータ(${url})`)
+                }
+            }, delay);
+        })
+    }
+
+    const onRequest = async () => {
+        try {
+            const data1 = await fakeRequest("/api/coffee/page1");
+            console.log("成功 1 : " + data1);
+            const data2 = await fakeRequest("/api/coffee/page2");
+            console.log("成功 2 : " + data2);
+            const data3 = await fakeRequest("/api/coffee/page3");
+            console.log("成功 3 : " + data3);
+        } catch (error) {
+            console.log("エラー発生 :" + error);
+        }
+    }
+    onRequest();
+    //普通のPromiseのやり方
+    /*
+    fakeRequestPromelp.com/api/coffee/page1")
+        .then((result) => {
+            console.log("成功 1 : " + result);
+            return fakeRequestPromise("/api/coffee/page2")
+        })
+        .then((result1) => { 
+            console.log("成功 2 : "+ result1);
+            return fakeRequestPromise("/api/coffee/page3")
+        })
+        .then((result2) => {
+            console.log("成功 3 : "+ result2);
+        })
+        .catch((error) => {
+            console.log("失敗 : " + error);
+        })
+    */
+</script>
