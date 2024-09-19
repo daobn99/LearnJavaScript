@@ -62,16 +62,16 @@
     //普通のPromiseのやり方
     /*
     fakeRequestPromelp.com/api/coffee/page1")
-        .then((result) => {
-            console.log("成功 1 : " + result);
+        .then((data) => {
+            console.log("成功 1 : " + data);
             return fakeRequestPromise("/api/coffee/page2")
         })
-        .then((result1) => { 
-            console.log("成功 2 : "+ result1);
+        .then((data1) => { 
+            console.log("成功 2 : "+ data1);
             return fakeRequestPromise("/api/coffee/page3")
         })
-        .then((result2) => {
-            console.log("成功 3 : "+ result2);
+        .then((data2) => {
+            console.log("成功 3 : "+ data2);
         })
         .catch((error) => {
             console.log("失敗 : " + error);

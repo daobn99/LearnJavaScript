@@ -1,0 +1,46 @@
+<head></head>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script>
+    // promise thông thường 
+    axios.get('https://swapi.dev/api/people/1')
+        .then((res) => {
+            console.log(res.data);  //res.data này bằng thằng data = await res.json() của bên fetch 
+            return axios.get('https://swapi.dev/api/people/2')
+        })
+        .then((res) => {
+            console.log("line 11: ", res.data);
+        })
+        .catch((error) => {
+            console.log("エラー！！", error);
+        })
+
+    // dùng async-await 
+    const axiosData = async (id) => {
+        try {
+            const res = await axios.get(`https://swapi.dev/api/people/${id}`);
+            console.log("line 21: ", res.data);  // {name: 'Luke Skywalker', height: '172', mass: '77', hair_color: 'blond', skin_color: 'fair', …}
+
+            const res2 = await axios.get("https://catfact.ninja/fact");
+            console.log("line 24: ", res2.data);
+        } catch (error) {
+            console.log("エラー！！", error);
+        }
+    }
+    axiosData(1);
+    axiosData(5);
+
+
+
+    /*
+        export const findDailyReport = (baseDay: string): Promise<DailyReport[]> => {
+            return axios.get("/report/daily", { params: { baseDay } });
+        };
+        const reports = await findDailyReport(baseDay);
+    
+        chẳng khác gì viết 
+        const reports = await axios.get("/report/daily", { params: { baseDay } });
+
+            ・/report/daily", { params: { baseDay } } : cái này ở trên trình duyệt url sẽ là :
+            /report/daily?baseDay=2024-01-01
+    */
+</script>

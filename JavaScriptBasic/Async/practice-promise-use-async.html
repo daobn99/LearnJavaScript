@@ -1,0 +1,58 @@
+<head></head>
+<script>
+    const users = [
+        { userId: 1, name: "nam" },
+        { userId: 2, name: "son dang" },
+        { userId: 3, name: "vinh" }
+    ];
+
+    const comments = [
+        { id: 1, userId: 1, content: "ra video moi chua ad" },
+        { id: 2, userId: 2, content: "tuan sau ra nha e" },
+        { id: 3, userId: 1, content: "thankiu a" }
+    ];
+
+    // Promiseを返す関数はそのまま使用
+    const getUsersById = (userIdList) => {
+        return new Promise((resolve) => {
+            const usersFilteredById= users.filter((user) => {
+                return userIdList.includes(user.userId);
+            });
+            setTimeout(() => {
+                resolve(usersFilteredById);
+            }, 1000);
+        });
+    };
+
+    const getComments = () => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(comments);
+            }, 1000);
+        });
+    };
+
+    // async-awaitを使った関数
+    const fetchData = async () => {
+        // コメントデータを取得
+        const comments = await getComments();
+
+        // userIdを取得
+        const userIdList = comments.map((comment) => comment.userId);
+
+        // userIdからユーザー情報を取得
+        const users = await getUsersById(userIdList);
+
+        // 最終的なデータを出力
+        const data = { user: users, comment: comments };
+        console.log(data);
+    };
+
+    // 実行
+    fetchData();
+    /*
+    Mỗi cái biến mà gán bằng await (comments, users) thì biến này
+    có giá trị bằng chính cái kết quả trả về của resolve() hàm bên trên.
+    Hay nó tương đương với cái value trong ngoặc của .then((value))
+    */
+</script>

@@ -1,0 +1,41 @@
+<head></head>
+<script>
+    //fetch() trả ra một promise 
+
+    // Cách làm với promise 
+    fetch('https://swapi.dev/api/people/1')   //cái này là một promise 
+        .then((res) => {
+            console.log("RESOLVE !!! : ", res); // đây chỉ là cái header 
+            return res.json();   // bodyを読み込む
+        })
+        .then((data) => {
+            console.log(data);    //{name: 'Luke Skywalker', height: '172', mass: '77', hair_color: 'blond', skin_color: 'fair', …}
+            return fetch('https://swapi.dev/api/people/2')
+        })
+        .then((res) => {
+            console.log("2個目のリクエストがRESOLVE!!!", res);
+            return res.json();
+        })
+        .then((data2) => {
+            console.log(data2);
+        })
+        .catch((error) => {
+            console.log("ERROR !!! ", error);
+        })
+    
+    // Cách làm với Async-await 
+    const fetchData = async() => {
+        try {
+            const res = await fetch('https://swapi.dev/api/people/5');
+            const data = await res.json();
+            console.log(data);
+
+            const res2 = await fetch('https://swapi.dev/api/people/6');
+            const data2 = await res2.json();
+            console.log(data2);
+        } catch (error) {
+            console.log("エラー！！", error);
+        }
+    }
+    fetchData()
+</script>

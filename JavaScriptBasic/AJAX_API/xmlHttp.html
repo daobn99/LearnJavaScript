@@ -1,0 +1,22 @@
+<head></head>
+<script>
+    // https://swapi.dev/api/people/1
+
+    const req = new XMLHttpRequest();
+
+    req.onload = function () {
+        console.log("成功！！");
+        // console.log(this.responseText);
+        const data = JSON.parse(this.responseText); 
+        console.log(data); //{name: 'Luke Skywalker', height: '172', mass: '77', hair_color: 'blond', skin_color: 'fair', …}
+
+        console.log(data.name);  //Luke Skywalker
+    }
+    req.onerror = function () {
+        console.log("失敗！！");
+        console.log(this);
+    }
+    req.open('GET', 'https://swapi.dev/api/people/1');
+    req.send();  //リクエストを送る
+
+</script>

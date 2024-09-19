@@ -7,21 +7,9 @@
     ];
 
     const comments = [
-        {
-            id: 1,
-            userId: 1,
-            content: "ra video moi chua ad"
-        },
-        {
-            id: 2,
-            userId: 2,
-            content: "tuan sau ra nha e"
-        },
-        {
-            id: 3,
-            userId: 1,
-            content: "thankiu a"
-        }
+        { id: 1, userId: 1, content: "ra video moi chua ad" },
+        { id: 2, userId: 2, content: "tuan sau ra nha e" },
+        { id: 3, userId: 1, content: "thankiu a" }
     ];
 
     /**1. Lấy comments
@@ -30,11 +18,11 @@
     */
     const getUsersById = (userIdList) => {
         return new Promise((resolve) => {
-            const result = users.filter((user) => {
+            const usersFilteredById = users.filter((user) => {
                 return userIdList.includes(user.userId);
             });
             setTimeout(() => {
-                resolve(result);
+                resolve(usersFilteredById);
             }, 1000);
         })
     }
